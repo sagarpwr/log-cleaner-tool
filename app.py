@@ -3,11 +3,6 @@ from flask import Flask, render_template, request
 import re
 import json
 
-
-
-app = Flask(__name__)
-
-
 app = Flask(__name__)
 
 def clean_log_text(raw_log):
