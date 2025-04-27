@@ -8,6 +8,12 @@ When working with log data in the office, raw logs often contain unnecessary met
 
 With this tool, **all of that is automated**!
 
+## Technologies Used 💻
+- **Flask** for the web framework.
+- **Python** for backend processing.
+- **Bootstrap** for frontend styling.
+
+
 ### ✨ Key Features
 - **Metadata Removal**: Automatically filters out irrelevant data from logs.
 - **Key-Value Pair Extraction**: Converts raw logs into structured JSON format.
@@ -75,6 +81,11 @@ You can also run this tool using Docker for easier deployment.
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
+log-cleaner-tool/                 # Root folder of your project
+│
+├── templates/                    # Folder for HTML files (Flask uses templates)
+│   └── index.html                # Main HTML file for the app
+
 
 ## 💻 Code Snippets
 
@@ -103,3 +114,34 @@ def clean_logs(raw_logs):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+### 'index.html'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log Cleaner Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Log Cleaner Tool</h1>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="text" class="form-label">Enter raw log data:</label>
+                <textarea class="form-control" id="text" name="text" rows="10" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Clean Logs</button>
+        </form>
+
+        {% if result %}
+        <div class="mt-4">
+            <h3>Cleaned Data:</h3>
+            <pre>{{ result }}</pre>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
